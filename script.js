@@ -256,9 +256,11 @@ document.getElementById('cartOverlay').addEventListener('click', (e) => { if (e.
 renderCart();
 
 /* --------------------------------------------------------------
-   ESTADO ABIERTO / CERRADO — horario real confirmado en Google Maps
-   el 04-09-2026: Lun-Mié 7:30-18:00, Jue-Vie 7:30-19:00,
-   Sáb 10:00-14:00, Dom cerrado.
+   ESTADO ABIERTO / CERRADO — horario actualizado por el cliente el
+   11-09-2026, tomado de la bio de su propio Instagram
+   (@petiit_coffee): L/V 07:30-18:00, S 10:00-14:00, D cerrado.
+   (El leído el 04-09 desde Google Maps partía la semana en
+   Lun-Mié / Jue-Vie con horas distintas; ese horario no existe.)
 -------------------------------------------------------------- */
 function updateOpenStatus() {
   let day, minutes;
@@ -276,9 +278,8 @@ function updateOpenStatus() {
   }
 
   let range = null;
-  if (day >= 1 && day <= 3) range = [7 * 60 + 30, 18 * 60];       // Lun-Mié
-  else if (day === 4 || day === 5) range = [7 * 60 + 30, 19 * 60]; // Jue-Vie
-  else if (day === 6) range = [10 * 60, 14 * 60];                  // Sáb
+  if (day >= 1 && day <= 5) range = [7 * 60 + 30, 18 * 60]; // Lun-Vie
+  else if (day === 6) range = [10 * 60, 14 * 60];            // Sáb
   // Domingo (0): range queda null -> cerrado
 
   const isOpen = range ? (minutes >= range[0] && minutes < range[1]) : false;
@@ -293,6 +294,12 @@ function updateOpenStatus() {
     visitLine.textContent = label;
     visitLine.style.cssText = 'font-weight:700; color:' + (isOpen ? '#7bc47f' : 'var(--gold)') + ';';
   }
+
+  // Marca en la lista de horario el día de hoy (mismo "day" ya calculado
+  // arriba, así que no puede desincronizarse con el punto Abierto/Cerrado).
+  document.querySelectorAll('#horarioSemana li[data-dia]').forEach(function (li) {
+    li.classList.toggle('hs-hoy', Number(li.dataset.dia) === day);
+  });
 }
 updateOpenStatus();
 setInterval(updateOpenStatus, 60000);

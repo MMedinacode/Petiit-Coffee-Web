@@ -61,7 +61,7 @@
 <header id="site-header">
   <div class="nav-inner">
     <button class="nav-brand" data-tab="inicio">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3a5 5 0 0 1 0 10 3.5 3.5 0 0 1 0-7 2.2 2.2 0 0 1 0 4.4"/></svg>
+      <img src="fotos/logo.jpg" alt="" class="nav-logo">
       Petiit Coffee
     </button>
     <nav class="nav-links" id="main-nav">
@@ -237,8 +237,21 @@
       <div class="visit-block"><h3>Dirección</h3><p>Miraflores 328, Santiago Centro</p></div>
       <div class="visit-block">
         <h3>Horario</h3>
-        <p id="visitStatusLine" style="margin-bottom:6px;"></p>
-        <p>Lunes a miércoles 7:30–18:00<br>Jueves y viernes 7:30–19:00<br>Sábado 10:00–14:00 · Domingo cerrado</p>
+        <p id="visitStatusLine" style="margin-bottom:10px;"></p>
+        <!-- Horario actualizado por el cliente el 11-09-2026, tomado de la
+             bio de su propio Instagram (@petiit_coffee): L/V 07:30-18:00,
+             S 10:00-14:00, D cerrado. Reemplaza el que se había leído mal
+             el 04-09 (partía la semana en Lun-Mié / Jue-Vie con horas
+             distintas, que no existe). -->
+        <ul class="horario-semana" id="horarioSemana">
+          <li data-dia="1"><span class="hs-dia">Lunes</span><span>07:30 – 18:00</span></li>
+          <li data-dia="2"><span class="hs-dia">Martes</span><span>07:30 – 18:00</span></li>
+          <li data-dia="3"><span class="hs-dia">Miércoles</span><span>07:30 – 18:00</span></li>
+          <li data-dia="4"><span class="hs-dia">Jueves</span><span>07:30 – 18:00</span></li>
+          <li data-dia="5"><span class="hs-dia">Viernes</span><span>07:30 – 18:00</span></li>
+          <li data-dia="6"><span class="hs-dia">Sábado</span><span>10:00 – 14:00</span></li>
+          <li data-dia="0"><span class="hs-dia">Domingo</span><span class="hs-cerrado">Cerrado</span></li>
+        </ul>
       </div>
       <div class="visit-block">
         <h3>Servicios</h3>
@@ -277,6 +290,7 @@
 <!-- ======================= FOOTER ======================= -->
 <footer class="site-footer">
   <div class="wrap">
+    <img src="fotos/logo.jpg" alt="Petiit Coffee" class="footer-logo">
     <strong>Petiit Coffee</strong>
     <p class="footer-tag">Café de especialidad · Santiago Centro</p>
     <p class="footer-links"><a href="https://instagram.com/petiit_coffee" target="_blank" rel="noopener">@petiit_coffee</a> · Sitio demo diseñado con cariño ✨</p>
